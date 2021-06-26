@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <table id="table" class="table">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Data inserção na loja</th>
+                <th>Total de vendas</th>
+
+                {% for date in dates %}
+                    <th>{{ date|date }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+    </table>
+{% endblock content %}
+
+{% block js %}
+    <script>
+        $(document).ready(
+            () => {
+                $("#table").DataTable({
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax": "ajax",
+                });
+            }
+        );
+    </script>
+{% endblock js %}
