@@ -1,5 +1,7 @@
 import os
 
+from django.db import transaction
+
 from ..models import Field
 
 path = os.path.dirname(__file__)
@@ -7,12 +9,14 @@ path = os.path.join(path, "raw.json")
 
 with open(path) as fp:
     data = fp.read()
-    data = data.replace("<UTC>", "None")
+    data = data.replace("<UTC>", "timezone.utc")
 
     import datetime
+    from django.utils import timezone
     data = eval(data)
 
 
+@transaction.atomic
 def insert():
     for d in data:
         kwargs = {}
