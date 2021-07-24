@@ -8,6 +8,9 @@ docker-compose up -d
 
 ### Primeira vez
 Caso seja a primeira vez executando o projeto, execute este comando também:
+
+> Aguarde os containers ligarem, cheque os logs enquanto isso através do comando `docker-compose logs -f`.
+
 ```
 docker container exec django_api python manage.py migrate
 ```

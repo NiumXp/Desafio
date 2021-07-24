@@ -3,7 +3,7 @@ version: '3'
 services:
     api:
         build: .
-        command: ["./wait-for-it.sh", "db:5432", "--",
+        command: ["./wait-for-it.sh", "db:5432", "-t", "0", "--",
                   "python", "manage.py", "runserver", "0.0.0.0:8080"]
 
         container_name: django_api
